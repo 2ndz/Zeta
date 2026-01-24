@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecting...</title>
+    <title>Checking...</title>
     <script>
-        if (window.location.href.indexOf('github.io') !== -1) {
-            window.location.replace("https://guns.lol/jlf");
-        } else {
-            window.location.href = "https://guns.lol/jlf";
+        function checkUser() {
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.country_code === 'UA') {
+                        window.location.href = "https://getzeta.lol/download";
+                    } else {
+                        document.body.innerHTML = '<h1>ты не из украины братан</h1>';
+                    }
+                })
+                .catch(() => {
+                    document.body.innerHTML = '<h1>ты не из украины братан</h1>';
+                });
         }
+        window.onload = checkUser;
     </script>
-    <meta http-equiv="refresh" content="0;URL='https://guns.lol/jlf'">
-    <link rel="canonical" href="https://guns.lol/jlf" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
-    <p>If you are not redirected, please click <a href="https://guns.lol/jlf">here</a>.</p>
+    <p>Checking...</p>
 </body>
 </html>
